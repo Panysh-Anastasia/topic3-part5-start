@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults.buttonColors
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.topic3.android.reddit.databinding.ActivityChatBinding
 import java.util.Locale
+import androidx.activity.compose.setContent
 
 class ChatActivity : AppCompatActivity() {
 
@@ -34,10 +36,15 @@ class ChatActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.button.setOnClickListener {
-            showToast()
+        setContent{
+            MaterialTheme{
+                ComposeButton {
+                    showToast()
+                }
+            }
         }
     }
+}
 
     private fun showToast() {
         Toast.makeText(this, "Imaginary chat started!", Toast.LENGTH_SHORT).show()
